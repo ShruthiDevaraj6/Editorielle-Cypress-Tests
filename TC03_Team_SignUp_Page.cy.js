@@ -2,6 +2,7 @@
 //const { homePage} = selectors;
 //import { selectors } from "../support/selectors";
 const data = require ('C:/Users/Shruthi Devaraj/Cypress Automation Editorelle Project/cypress/fixtures/editorelle.json')
+
 import {homePage} from "../support/selectors"
 import {teamSignUp} from "../support/selectors"
 import EmailGenerator from '../support/utils';
@@ -17,13 +18,13 @@ describe('Team Signup page scenarios', () =>{
     it('Should complete successful signup with valid inputs',() =>{
         cy.get(teamSignUp.firstName).type(userdata.firstname)
         cy.get(teamSignUp.lastName).type(userdata.lastname)
-        cy.get(teamSignUp.email).type(userdata.email)
+        cy.get(teamSignUp.email).type(EmailGenerator.generateRandomEmail())
         cy.get(teamSignUp.businessName).type(userdata.businessName)
         cy.get(teamSignUp.password).type(userdata.password)
         cy.get(teamSignUp.reEnterPassword).type(userdata.password)
         cy.get(teamSignUp.checkbox).click()
         cy.get(teamSignUp.createAccountbtn).click()
-        cy.url().should('include','/team/account/signup-verification?email=testshru@yopmail.com')
+        cy.url().should('include','/team/account/signup-verification')
     })
     it('Should display error messages when submitting empty form',() =>{
         cy.get(teamSignUp.createAccountbtn).click()
@@ -51,17 +52,17 @@ describe('Team Signup page scenarios', () =>{
     it('Should be able to create account when no input is entered in non-mandatory business name field',() =>{
         cy.get(teamSignUp.firstName).type(userdata.firstname)
         cy.get(teamSignUp.lastName).type(userdata.lastname)
-        cy.get(teamSignUp.email).type(userdata.email)
+        cy.get(teamSignUp.email).type(EmailGenerator.generateRandomEmail())
         cy.get(teamSignUp.password).type(userdata.password)
         cy.get(teamSignUp.reEnterPassword).type(userdata.password)
         cy.get(teamSignUp.checkbox).click()
         cy.get(teamSignUp.createAccountbtn).click()
-        cy.url().should('include','/team/account/signup-verification?email=testshru@yopmail.com')
+        cy.url().should('include','/team/account/signup-verification')
     })
     it('Should display error messages for password less than 10 characters, no uppercase and and no number',() =>{
         cy.get(teamSignUp.firstName).type(userdata.firstname)
         cy.get(teamSignUp.lastName).type(userdata.lastname)
-        cy.get(teamSignUp.email).type(userdata.email)
+        cy.get(teamSignUp.email).type(EmailGenerator.generateRandomEmail())
         cy.get(teamSignUp.password).type('pass')
         cy.get(teamSignUp.reEnterPassword).type('pass')
         cy.get(teamSignUp.checkbox).click()
@@ -71,7 +72,7 @@ describe('Team Signup page scenarios', () =>{
     it('Should display error message for blank re-enter password field',() =>{
         cy.get(teamSignUp.firstName).type(userdata.firstname)
         cy.get(teamSignUp.lastName).type(userdata.lastname)
-        cy.get(teamSignUp.email).type(userdata.email)
+        cy.get(teamSignUp.email).type(EmailGenerator.generateRandomEmail())
         cy.get(teamSignUp.password).type(userdata.password)
         cy.get(teamSignUp.checkbox).click()
         cy.get(teamSignUp.createAccountbtn).click()
@@ -80,7 +81,7 @@ describe('Team Signup page scenarios', () =>{
     it('Should display error message when passwords do not match',() =>{
         cy.get(teamSignUp.firstName).type(userdata.firstname)
         cy.get(teamSignUp.lastName).type(userdata.lastname)
-        cy.get(teamSignUp.email).type(userdata.email)
+        cy.get(teamSignUp.email).type(EmailGenerator.generateRandomEmail())
         cy.get(teamSignUp.password).type(userdata.password)
         cy.get(teamSignUp.reEnterPassword).type('pass{enter}')
         cy.contains('Please make sure your passwords match').should('be.visible')  
@@ -98,7 +99,7 @@ describe('Team Signup page scenarios', () =>{
     it('Should display error message when checkbox is not checked before submitting form',() =>{
         cy.get(teamSignUp.firstName).type(userdata.firstname)
         cy.get(teamSignUp.lastName).type(userdata.lastname)
-        cy.get(teamSignUp.email).type(userdata.email)
+        cy.get(teamSignUp.email).type(EmailGenerator.generateRandomEmail())
         cy.get(teamSignUp.password).type(userdata.password)
         cy.get(teamSignUp.reEnterPassword).type(userdata.password)
         cy.get(teamSignUp.createAccountbtn).click()
@@ -117,4 +118,5 @@ describe('Team Signup page scenarios', () =>{
         cy.get(teamSignUp.lastName2).type(userdata.lastname2)
         cy.get(teamSignUp.memberEmail2).eq(0).type(randomEmail2)
     })
+    
 })
