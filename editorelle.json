@@ -1,6 +1,10 @@
 {
     "firstname": "Shruthi",
+    "firstname1": "testFn",
+    "firstname2": "testFnsecond",
     "lastname": "Devaraj",
+    "lastname1": "testLn",
+    "lastname2": "testLnsecond",
     "email": "testshru@yopmail.com",
     "businessName": "Business name test",
     "password": "Password123",
