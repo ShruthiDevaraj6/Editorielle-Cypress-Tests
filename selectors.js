@@ -19,14 +19,20 @@ export const homePage = {
 
   export const teamSignUp = {
     firstName: '[data-cy="first-name"]',
+    firstName1: '[data-cy="first-name-1"]',
+    firstName2: '[data-cy="first-name-2"]',
     lastName: '[data-cy="last-name"]',
+    lastName1: '[data-cy="last-name-1"]',
+    lastName2: '[data-cy="last-name-2"]',
     email: '[data-cy="email"]',
+    memberEmail1: '[data-cy="email-1"]',
+    memberEmail2: '[data-cy="email-2"]',
     businessName: '[data-cy="business-name"]',
     password: '[data-cy="password"]',
     reEnterPassword: '[data-cy="password-confirmation"]',
     checkbox: '[data-cy="terms-and-conditions"]',
     createAccountbtn: '[data-cy="submit-button"]',
-    
+    addMemberBtn: '[data-cy="next"]',
   }
 
   export const loginPage = {
