@@ -18,6 +18,13 @@ Cypress.Commands.add('login', (username, password) => {
         cy.get('[data-cy="submit-button"]').click()
         cy.url().should('include','/individual/dashboard/home/plan')
 })
+Cypress.Commands.add('loginTeam', (username, password) => {
+    cy.visit('/account/signin');
+        cy.get('[data-cy="email"]').type(username)
+        cy.get('[data-cy="password"]').type(password)
+        cy.get('[data-cy="submit-button"]').click()
+        
+})
 //
 //
 // -- This is a child command --
