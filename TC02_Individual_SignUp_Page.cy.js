@@ -3,6 +3,7 @@
 //import { selectors } from "../support/selectors";
 const data = require ('C:/Users/Shruthi Devaraj/Cypress Automation Editorelle Project/cypress/fixtures/editorelle.json')
 import {homePage, individualSignUp} from "../support/selectors"
+import EmailGenerator from '../support/utils';
 describe('Individual Signup page scenarios', () =>{
     let userdata;
     beforeEach(()=> {
@@ -102,5 +103,26 @@ describe('Individual Signup page scenarios', () =>{
         cy.get(individualSignUp.createAccountbtn).click()
         cy.contains('Please accept the Terms & Conditions').should('be.visible')  
     })
-    
+    it('Should add dynamic email to the sign up page',() =>{
+        const randomEmail1 = EmailGenerator.generateRandomEmail();
+        cy.get(individualSignUp.firstName).type(userdata.firstname)
+        cy.get(individualSignUp.lastName).type(userdata.lastname)
+        cy.get(individualSignUp.email).eq(0).type(randomEmail1)
+        cy.get(individualSignUp.password).type(userdata.password)
+        cy.get(individualSignUp.reEnterPassword).type(userdata.password)
+        cy.get(individualSignUp.checkbox).click()
+        cy.get(individualSignUp.createAccountbtn).click()
+        cy.url().should('include','/individual/account/signup-verification?')
+    })
+    it('Should add another dynamic email to the sign up page',() =>{
+        const randomEmail2 = EmailGenerator.generateRandomEmail();
+        cy.get(individualSignUp.firstName).type(userdata.firstname)
+        cy.get(individualSignUp.lastName).type(userdata.lastname)
+        cy.get(individualSignUp.email).eq(0).type(randomEmail2)
+        cy.get(individualSignUp.password).type(userdata.password)
+        cy.get(individualSignUp.reEnterPassword).type(userdata.password)
+        cy.get(individualSignUp.checkbox).click()
+        cy.get(individualSignUp.createAccountbtn).click()
+        cy.url().should('include','/individual/account/signup-verification?')
+    })  
 })
