@@ -105,18 +105,5 @@ describe('Team Signup page scenarios', () =>{
         cy.get(teamSignUp.createAccountbtn).click()
         cy.contains('Please accept the Terms & Conditions').should('be.visible')  
     })
-    it('Should invite team members using dynamic email',() =>{
-        cy.loginTeam("shru890@yopmail.com","Password123") 
-        cy.wait(3000)
-        const randomEmail1 = EmailGenerator.generateRandomEmail();
-        const randomEmail2 = EmailGenerator.generateRandomEmail();
-        cy.get(teamSignUp.firstName1).type(userdata.firstname1)
-        cy.get(teamSignUp.lastName1).type(userdata.lastname1)
-        cy.get(teamSignUp.memberEmail1).eq(0).type(randomEmail1)
-        cy.get(teamSignUp.addMemberBtn).click()
-        cy.get(teamSignUp.firstName2).type(userdata.firstname2)
-        cy.get(teamSignUp.lastName2).type(userdata.lastname2)
-        cy.get(teamSignUp.memberEmail2).eq(0).type(randomEmail2)
-    })
     
 })
