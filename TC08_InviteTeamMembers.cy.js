@@ -56,9 +56,9 @@ it('Should invite 6 maximum limit of team members using dynamic email',() =>{
     cy.url().should('include','/team/choose-categories')
 })
 it('Should display error message when invalid first name, last name and email are entered',() =>{
-    cy.get(teamSignUp.firstName1).clear().should('exist', { timeout: 10000 }).type('fn1@')
-    cy.get(teamSignUp.lastName1).clear().should('exist', { timeout: 10000 }).type('ln2^')
-    cy.get(teamSignUp.memberEmail1).clear().should('exist', { timeout: 10000 }).type("testinvalid@")
+    cy.get(teamSignUp.firstName1).type('fn1@')
+    cy.get(teamSignUp.lastName1).type('ln2^')
+    cy.get(teamSignUp.memberEmail1).type("testinvalid@")
     cy.get(teamSignUp.nextBtn).click()
     cy.contains("Please remove special characters or numbers in first name").should('be.visible')
     cy.contains("Please remove special characters or numbers in last name").should('be.visible')
