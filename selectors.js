@@ -45,9 +45,11 @@ export const homePage = {
     checkbox: '[data-cy="terms-and-conditions"]',
     createAccountbtn: '[data-cy="submit-button"]',
     addMemberBtn: '[data-cy="next"]',
-    nextBtn: '.mt-2 > [data-cy="next-to-upgrade"]',
+    nextBtn: '[data-cy="next-to-upgrade"]',
     myselfBtn: '[data-cy="businessStatus-myself"] > .flex-col > .text-sm',
-    businessNextBtn: '[data-cy="choose-business-next"]'
+    businessNextBtn: '[data-cy="choose-business-next"]',
+    removeBtn: '#forScroll > div:nth-child(4) > button',
+    emailErrorMsg: '.text-left > [data-cy="alert-popup"] > div > [data-cy="alert-content"]'
   }
 
   export const loginPage = {
