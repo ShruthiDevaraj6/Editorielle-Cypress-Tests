@@ -2,7 +2,6 @@ import { faker } from '@faker-js/faker';
 import {homePage,teamSignUp} from "../support/selectors"
 import EmailGenerator from '../support/utils';
 describe('Invite team members functionality scenarios', () =>{
-    let userdata;
     beforeEach(()=> {
         cy.visit("/")
         cy.get(homePage.signUpButtonTeam).click()
